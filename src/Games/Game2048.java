@@ -50,47 +50,21 @@ public class Game2048 extends Game {
     }
 
     private Color getColorByValue(int value) {
-        Color color = null;
-        switch (value) {
-            case 0:
-                color = Color.WHITE;
-                break;
-            case 2:
-                color = Color.LIGHTSALMON;
-                break;
-            case 4:
-                color = Color.INDIGO;
-                break;
-            case 8:
-                color = Color.BLUE;
-                break;
-            case 16:
-                color = Color.SKYBLUE;
-                break;
-            case 32:
-                color = Color.SEAGREEN;
-                break;
-            case 64:
-                color = Color.GREEN;
-                break;
-            case 128:
-                color = Color.ORANGE;
-                break;
-            case 256:
-                color = Color.DARKORANGE;
-                break;
-            case 512:
-                color = Color.RED;
-                break;
-            case 1024:
-                color = Color.PINK;
-                break;
-            case 2048:
-                color = Color.VIOLET;
-                break;
-        }
-
-        return color;
+        return switch (value) {
+            case 0 -> Color.WHITE;
+            case 2 -> Color.LIGHTSALMON;
+            case 4 -> Color.INDIGO;
+            case 8 -> Color.BLUE;
+            case 16 -> Color.SKYBLUE;
+            case 32 -> Color.SEAGREEN;
+            case 64 -> Color.GREEN;
+            case 128 -> Color.ORANGE;
+            case 256 -> Color.DARKORANGE;
+            case 512 -> Color.RED;
+            case 1024 -> Color.PINK;
+            case 2048 -> Color.VIOLET;
+            default -> null;
+        };
     }
 
     private void setCellColoredNumber(int x, int y, int value) {
@@ -104,7 +78,7 @@ public class Game2048 extends Game {
     private boolean compressRow(int[] row) {
         boolean isEdit = false;
         int counter = 0;
-        int tmp = 0;
+        int tmp;
 
         for (int i = 0; i < row.length; i++) {
             if (row[i] == 0) {
