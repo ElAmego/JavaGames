@@ -26,11 +26,11 @@ public class SnakeGame extends Game {
     }
 
     private void drawScene() {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 if (i % 2 == 0 ) {
                     if (j % 2 == 0) {
-                        setCellValueEx(i, j, Color.GREEN, "");
+                        setCellValueEx(j, i, Color.GREEN, "");
                     } else {
                         setCellValueEx(i, j, Color.DARKGREEN, "");
                     }
