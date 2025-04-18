@@ -33,9 +33,7 @@ public class Game2048 extends Game {
     private void createNewNumber() {
         boolean isContinue = true;
 
-        if (getMaxTileValue() == 2048) {
-            win();
-        }
+        if (getMaxTileValue() == 2048) win();
 
         do {
             int x = getRandomNumber(SIDE);
@@ -68,11 +66,8 @@ public class Game2048 extends Game {
     }
 
     private void setCellColoredNumber(int x, int y, int value) {
-        if (value != 0) {
-            setCellValueEx(x, y, getColorByValue(value), String.valueOf(value));
-        } else {
-            setCellValueEx(x, y, getColorByValue(value), "");
-        }
+        String str = value != 0 ? String.valueOf(value) : "";
+        setCellValueEx(x, y, getColorByValue(value), str);
     }
 
     private boolean compressRow(int[] row) {
@@ -111,9 +106,7 @@ public class Game2048 extends Game {
 
     @Override
     public void onKeyPress(Key key) {
-        if (!canUserMove() && !isGameStopped) {
-            gameOver();
-        }
+        if (!canUserMove() && !isGameStopped) gameOver();
 
         if (key == Key.UP && !isGameStopped) {
             moveUp();
@@ -210,9 +203,9 @@ public class Game2048 extends Game {
         boolean isCanUserMove = false;
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                if (gameField[i][j] == 0) { isCanUserMove = true; }
-                else if (i < SIDE-1 && gameField[i][j] == gameField[i+1][j] && !isCanUserMove) { isCanUserMove = true; }
-                else if (j < SIDE-1 && gameField[i][j] == gameField[i][j+1] && !isCanUserMove) { isCanUserMove = true; }
+                if (gameField[i][j] == 0) isCanUserMove = true;
+                else if (i < SIDE-1 && gameField[i][j] == gameField[i+1][j] && !isCanUserMove) isCanUserMove = true;
+                else if (j < SIDE-1 && gameField[i][j] == gameField[i][j+1] && !isCanUserMove) isCanUserMove = true;
             }
         }
 
